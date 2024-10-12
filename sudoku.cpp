@@ -1,7 +1,7 @@
 #include<iostream>
 #include<random>
 
-int i,j,a;
+int i,j,p;
 int a[9][9];
 
 int numberGenerator(){
@@ -20,9 +20,9 @@ void boardValue(){ //to assign values to the board locations
 
 int randomVal(){
     while(1){
-        a = numberGenerator();
-        if(isValid(a))
-            return a;
+        p = numberGenerator();
+        if(isValid(p))
+            return p;
     }
 }
 
