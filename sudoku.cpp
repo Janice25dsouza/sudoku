@@ -1,7 +1,7 @@
 #include<iostream>
 #include<random>
 
-int i,j,p;
+int i,j,p,row,col,v;
 int a[9][9],m[9][9];
 
 int numberGenerator(int v1,int v2){
@@ -58,19 +58,29 @@ void decider(){ //to decide if a value has to be printed or not
 }
 
 void printBoard(){
-    cout<<" ---+---+---+---+---+---+---+---+---\n";
+    std::cout<<" ---+---+---+---+---+---+---+---+---\n";
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
-            cout<<" | ";
+            std::cout<<" | ";
             if(m[i][j]==1)
-                cout<<a[i][j];
-            cout<<" | ";
+                std::cout<<a[i][j];
+            std::cout<<" | ";
             if(j==8){
-                cout<<"\n";
-                cout<<" ---+---+---+---+---+---+---+---+---\n";
+                std::cout<<"\n";
+                std::cout<<" ---+---+---+---+---+---+---+---+---\n";
             }
         }
     }  
+}
+
+bool checkOnes(){
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            if(m[i][j]==0)
+                return false;
+        }
+    }
+    return true;
 }
 
 int main(){
@@ -82,7 +92,27 @@ int main(){
     }
     boardValue();
     decider();
-    cout<<"Your game starts here: \n";
-    printBoard();
-    
+    std::cout<<"Your game starts here: \n";
+    std::cout<<"Note: the values of the rows and columns range from 0 to 8\n";
+    while(checkOnes()){
+        printBoard();
+        std::cout<<"Enter the row:\n";
+        std::cin>>row;
+        std::cout<<"Enter the column:\n";
+        std::cin>>col;
+        std::cout<<"Enter the value:\n";
+        std::cin>>v;
+        if((i!=0||1||2||3||4||5||6||7||8)||(i!=0||1||2||3||4||5||6||7||8)||(v!=1||2||3||4||5||6||7||8||9)){
+            std::cout<<"invalid entries"
+        }
+        else{
+            if(a[i][j]==1){
+                m[i][j]=1;
+                std::cout<<"You've entered a correct value!!!\n";
+            }
+            else{
+                std::cout<<"Invalid entry";
+            }
+        } 
+    } 
 }
