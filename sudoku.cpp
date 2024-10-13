@@ -1,13 +1,13 @@
 #include<iostream>
 #include<random>
 
-int i,j,a;
-int a[9][9];
+int i,j,p;
+int a[9][9],m[9][9];
 
-int numberGenerator(){
+int numberGenerator(int v1,int v2){
     std::random_device rd;
     std::default_random_engine eng(rd());
-    std::uniform_int_distribution<int> dist(1,9);
+    std::uniform_int_distribution<int> dist(v1,v2);
     return dist(eng);
 }
 
@@ -20,9 +20,9 @@ void boardValue(){ //to assign values to the board locations
 
 int randomVal(){
     while(1){
-        a = numberGenerator();
-        if(isValid(a))
-            return a;
+        p = numberGenerator(1,9);
+        if(isValid(p))
+            return p;
     }
 }
 
@@ -45,4 +45,33 @@ int isValid(int val){ // to check if values generated ar valid
             y=j;
     }
     return 1;
+}
+
+void decider(){ //to decide if a value has to be printed or not
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            int val = numberGenerator(1,4);
+            if(val == 1)
+                m[i][j]=1;
+        }
+    }
+}
+
+void printBoard(){
+    //cout<<" ---+---+---+---+---+---+---+---+---\n";
+    //cout<<"| "<<a[i][j]<<
+    
+    
+}
+
+int main(){
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            m[i][j]=0;
+        }
+        j=0;
+    }
+    boardValue();
+    decider();
+    
 }
