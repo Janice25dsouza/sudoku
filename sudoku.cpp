@@ -58,10 +58,19 @@ void decider(){ //to decide if a value has to be printed or not
 }
 
 void printBoard(){
-    //cout<<" ---+---+---+---+---+---+---+---+---\n";
-    //cout<<"| "<<a[i][j]<<
-    
-    
+    cout<<" ---+---+---+---+---+---+---+---+---\n";
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            cout<<" | ";
+            if(m[i][j]==1)
+                cout<<a[i][j];
+            cout<<" | ";
+            if(j==8){
+                cout<<"\n";
+                cout<<" ---+---+---+---+---+---+---+---+---\n";
+            }
+        }
+    }  
 }
 
 int main(){
@@ -73,5 +82,7 @@ int main(){
     }
     boardValue();
     decider();
+    cout<<"Your game starts here: \n";
+    printBoard();
     
 }
