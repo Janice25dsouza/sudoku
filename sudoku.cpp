@@ -14,20 +14,24 @@ int numberGenerator(int v1,int v2){
 int isValid(int val){ // to check if values generated ar valid
     int x,y;
     for(x=0;x<j;x++){
-        if(val==a[i][x])
+        if(val==a[i][x]){
             return 0;
+        }
     }
     for(x=0;x<i;x++){
-        if(val==a[x][j])
+        if(val==a[x][j]){
             return 0;
+        }
     }
     for(x=i;x<(i+3);x++){
         for(y=j;y<(j+3);y++){
-            if(val==a[x][y])
+            if(val==a[x][y]){
                 return 0;
+            } 
         }
-        if(x!=(i+2))
+        if(x!=(i+2)){
             y=j;
+        }   
     }
     return 1;
 }
@@ -35,15 +39,17 @@ int isValid(int val){ // to check if values generated ar valid
 int randomVal(){
     while(1){
         p = numberGenerator(1,9);
-        if(isValid(p))
+        if(isValid(p)){
             return p;
+        }    
     }
 }
 
 void boardValue(){ //to assign values to the board locations
     for(i=0;i<9;i++){
-        for(j=0;j<9;j++)
+        for(j=0;j<9;j++){
             a[i][j]=randomVal();
+        } 
     }
 }
 
@@ -51,8 +57,9 @@ void decider(){ //to decide if a value has to be printed or not
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
             int val = numberGenerator(1,4);
-            if(val == 1)
+            if(val == 1){
                 m[i][j]=1;
+            }
         }
     }
 }
@@ -62,8 +69,9 @@ void printBoard(){
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
             std::cout<<" | ";
-            if(m[i][j]==1)
+            if(m[i][j]==1){
                 std::cout<<a[i][j];
+            }
             std::cout<<" | ";
             if(j==8){
                 std::cout<<"\n";
@@ -76,8 +84,9 @@ void printBoard(){
 bool checkOnes(){
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
-            if(m[i][j]==0)
+            if(m[i][j]==0){
                 return false;
+            }
         }
     }
     return true;
