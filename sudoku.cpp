@@ -102,8 +102,8 @@ int main(){
         std::cin>>col;
         std::cout<<"Enter the value:\n";
         std::cin>>v;
-        if((i!=0||1||2||3||4||5||6||7||8)||(i!=0||1||2||3||4||5||6||7||8)||(v!=1||2||3||4||5||6||7||8||9)){
-            std::cout<<"invalid entries"
+        if(i<0 || i>8 || j<0 || j>8 || v<1 || v>9){
+            std::cout<<"Invalid entries\n";
         }
         else{
             if(a[i][j]==1){
@@ -114,5 +114,6 @@ int main(){
                 std::cout<<"Invalid entry";
             }
         } 
-    } 
+    }
+    std::cout<<"Game Over!!!\n"; 
 }
