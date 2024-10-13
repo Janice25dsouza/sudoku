@@ -11,21 +11,6 @@ int numberGenerator(int v1,int v2){
     return dist(eng);
 }
 
-void boardValue(){ //to assign values to the board locations
-    for(i=0;i<9;i++){
-        for(j=0;j<9;j++)
-            a[i][j]=randomVal();
-    }
-}
-
-int randomVal(){
-    while(1){
-        p = numberGenerator(1,9);
-        if(isValid(p))
-            return p;
-    }
-}
-
 int isValid(int val){ // to check if values generated ar valid
     int x,y;
     for(x=0;x<j;x++){
@@ -45,6 +30,21 @@ int isValid(int val){ // to check if values generated ar valid
             y=j;
     }
     return 1;
+}
+
+int randomVal(){
+    while(1){
+        p = numberGenerator(1,9);
+        if(isValid(p))
+            return p;
+    }
+}
+
+void boardValue(){ //to assign values to the board locations
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++)
+            a[i][j]=randomVal();
+    }
 }
 
 void decider(){ //to decide if a value has to be printed or not
