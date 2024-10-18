@@ -1,7 +1,7 @@
 #include<iostream>
 #include<random>
 
-int i,j,k,a[9][9],m[9][9],val,n;
+int i,j,k,a[9][9],m[9][9],val,n,x,y;
 int count=22;
 
 void printBoard(){
@@ -43,8 +43,7 @@ void enterVals(){
     }
 }
 
-//for initial validity check
-int isValid(){                      
+int isValid(){          //for initial validity check                
     k=1;
     while(k!=10){
         //for rows
@@ -102,6 +101,67 @@ int isValid(){
     return 0;    
 }
 
+int isValidFinal(){          //for final validity check                
+    k=1;
+    while(k!=10){
+        //for rows
+        for(i=0;i<9;i++){            
+            count=0;
+            for(j=0;j<9;j++){
+                if(a[i][j]==k){
+                    count++;
+                }
+                if((a[i][j]==0)||(count>1)){
+                    return 1;
+                }
+            }
+        }
+        //for columns
+        for(j=0;j<9;j++){           
+            count=0;
+            for(i=0;i<9;i++){
+                if(a[i][j]==k){
+                    count++;
+                }
+                if((a[i][j]==0)||(count>1)){
+                    return 1;
+                }
+            }
+        }
+        //for 3x3 boxes
+        int indexval=0;
+        int counter=0;
+        while(counter!=3){
+            j=indexval;
+            for(i=0;i<9;i++){
+                for(j;j<=indexval+2;j++){
+                    if(a[i][j]==k){
+                        count++;
+                    }
+                    if((a[i][j]==0)||(count>1)){
+                        return 1;
+                    }
+                    if((i==2||i==5||i==8)&&(j==(indexval+2))){
+                        count=0;
+                    }
+                }
+            }
+            indexval+=3;
+            counter++;
+        }
+        
+
+        k++;
+    }
+    return 0;    
+}
+
+void insertVal(int i,int j,int v){
+    if(m[i][j]!=0){
+        a[i][j]=v;
+    }
+}
+
 int main(){
     for(i=0;i<9;i++){
         for(j=0;j<9;j++){
@@ -114,6 +174,27 @@ int main(){
     while(p==1){
         p=isValid();
     }
-    std::cout<<"NOTE: Enter x to validate your answers\n";
+    std::cout<<"START GAME\n";
     printBoard();
+    int r,final;
+    while(1){
+        std::cout<<"\nEnter the row value: ";
+        std::cin>>x;
+        std::cout<<"\nEnter the column value: ";
+        std::cin>>y;
+        std::cout<<"\nEnter the value to be inserted: ";
+        std::cin>>val;
+        insertVal(x,y,val);
+        printBoard();
+        std::cout<<"\nEnter 0 to exit";
+        std::cin>>r;
+        if(r==0)
+            break;
+    }
+    final=isValidFinal();
+        if(final==0)
+            std::cout<<"YOU WIN!!!";
+        else{
+            std::cout<<"YOU LOSE!!!";
+        }
 }
