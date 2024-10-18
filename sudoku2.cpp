@@ -44,7 +44,7 @@ void enterVals(){
 }
 
 //for initial validity check
-void isValid(){                      
+int isValid(){                      
     k=1;
     while(k!=10){
         //for rows
@@ -56,7 +56,7 @@ void isValid(){
                 }
                 if(count>1){
                     a[i][j]=numberGenerator(1,9);
-                    isValid();
+                    return 1;
                 }
             }
         }
@@ -69,14 +69,14 @@ void isValid(){
                 }
                 if(count>1){
                     a[i][j]=numberGenerator(1,9);
-                    isValid();
+                    return 1;
                 }
             }
         }
 
-        k++;
+        k;
     }
-    
+    return 0;    
 }
 
 int main(){
@@ -87,7 +87,10 @@ int main(){
         }
     }
     enterVals();
-    isValid();
+    int p=1;
+    while(p==1){
+        p=isValid();
+    }
     std::cout<<"NOTE: Enter x to validate your answers\n";
     printBoard();
 }
