@@ -73,8 +73,31 @@ int isValid(){
                 }
             }
         }
+        //for 3x3 boxes
+        int indexval=0;
+        int counter=0;
+        while(counter!=3){
+            j=indexval;
+            for(i=0;i<9;i++){
+                for(j;j<=indexval+2;j++){
+                    if(a[i][j]==k){
+                        count++;
+                    }
+                    if(count>1){
+                        a[i][j]=numberGenerator(1,9);
+                        return 1;
+                    }
+                    if((i==2||i==5||i==8)&&(j==(indexval+2))){
+                        count=0;
+                    }
+                }
+            }
+            indexval+=3;
+            counter++;
+        }
+        
 
-        k;
+        k++;
     }
     return 0;    
 }
