@@ -3,6 +3,7 @@
 
 int i,j,k,a[9][9],m[9][9],val,n,x,y;
 int count=22;
+char d;
 
 void printBoard(){
     std::cout<<" ---+---+---+---+---+---+---+---+---\n";
@@ -189,13 +190,19 @@ int main(){
         printBoard();
         std::cout<<"\nEnter 0 to exit: ";
         std::cin>>r;
-        if(r==0)
-            break;
-    }
-    final=isValidFinal();
-        if(final==0)
-            std::cout<<"YOU WIN!!!";
-        else{
-            std::cout<<"YOU LOSE!!!";
-        }
+        if(r==0){
+            final=isValidFinal();
+            if(final==0){
+                std::cout<<"YOU WIN!!!\n";
+                break;
+            }
+            else{
+                std::cout<<"WRONG SOLUTION!!!\n";
+                std::cout<<"Do you want to quit?(y/n)\n";
+                std::cin>>d;
+                if(d=='y')
+                    break;
+            }
+        }        
+    }     
 }
