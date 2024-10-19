@@ -157,8 +157,9 @@ int isValidFinal(){          //for final validity check
 }
 
 void insertVal(int i,int j,int v){
-    if(m[i][j]!=0){
+    if(m[i][j]!=1){
         a[i][j]=v;
+        m[i][j]=2;
     }
 }
 
@@ -186,7 +187,7 @@ int main(){
         std::cin>>val;
         insertVal(x,y,val);
         printBoard();
-        std::cout<<"\nEnter 0 to exit";
+        std::cout<<"\nEnter 0 to exit: ";
         std::cin>>r;
         if(r==0)
             break;
