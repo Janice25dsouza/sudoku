@@ -180,10 +180,8 @@ int main(){
     printBoard();
     int r,final;
     while(1){
-        std::cout<<"\nEnter the row value: ";
-        std::cin>>x;
-        std::cout<<"\nEnter the column value: ";
-        std::cin>>y;
+        std::cout<<"\nEnter the row and the column: ";
+        std::cin>>x>>y;
         std::cout<<"\nEnter the value to be inserted: ";
         std::cin>>val;
         insertVal(x,y,val);
